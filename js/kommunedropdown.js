@@ -48,7 +48,6 @@ function removeKommuneFromArr(option)
 
 function createATag(option)
 {
-    {
         searchInput.value = option.navn;
         searchOptions.innerHTML = "";
         const aTag = document.createElement('a')
@@ -57,8 +56,6 @@ function createATag(option)
         document.body.appendChild(aTag);
 
         removeKommuneFromArr(option);
-    }
-
 }
 
 function getUserInput() {
