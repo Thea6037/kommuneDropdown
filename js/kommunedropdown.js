@@ -27,7 +27,6 @@ async function fetchKommuner(any)
     kommuneArr = await fetchAnyUrl(urlKommune)
     console.log(kommuneArr)
     kommuneArr.forEach(fillDropdown)
-    kommuneArr.forEach(fillInputField)
 }
 
 function selectedKommune()
