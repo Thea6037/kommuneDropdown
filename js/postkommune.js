@@ -2,11 +2,13 @@ console.log("jeg er i postkommune")
 
 const pbPostkommune = document.getElementById("pbPostKommune");
 const pbPutkommune = document.getElementById("pbPutKommune");
+const pbDeleteKommune = document.getElementById("pbDeleteKommune");
 
 const inpKode = document.getElementById("inpKode");
 const inpName = document.getElementById("inpName");
 const inpHref = document.getElementById("inpHref");
 const inpRegionKode = document.getElementById("inpRegionKode")
+
 
 const kommuneUrl = "http://localhost:8080/kommune";
 
@@ -41,6 +43,18 @@ async function putkommune()
     if (res.ok)
     {
         alert("kommune is changed")
+    }
+}
+
+async function deleteKommune()
+{
+    const kommune = getkommune();
+    const deleteUrl = kommuneUrl + "/" + kommune.kode;
+    console.log(deleteUrl)
+    const res = await postObjectAsJson(deleteUrl, kommune, "DELETE")
+    if (res.ok)
+    {
+        alert("kommune is deleted")
     }
 }
 
@@ -97,5 +111,11 @@ function actionPutkommune()
     putkommune();
 }
 
+function actionDeletekommune()
+{
+    deleteKommune();
+}
+
 pbPostkommune.addEventListener('click', actionPostkommune)
 pbPutkommune.addEventListener('click', actionPutkommune)
+pbDeleteKommune.addEventListener('click', actionDeletekommune)

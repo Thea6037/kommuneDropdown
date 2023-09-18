@@ -2,6 +2,7 @@ console.log("jeg er i postregion")
 
 const pbPostregion = document.getElementById("pbPostRegion");
 const pbPutRegion = document.getElementById("pbPutRegion");
+const pbDeleteRegion = document.getElementById("pbDeleteRegion")
 
 const inpKode = document.getElementById("inpKode");
 const inpName = document.getElementById("inpName");
@@ -38,6 +39,18 @@ async function putRegion()
     if (res.ok)
     {
         alert("Region is changed")
+    }
+}
+
+async function deleteRegion()
+{
+    const region = getRegion();
+    const deleteUrl = regionUrl + "/" + region.kode;
+    console.log(deleteUrl)
+    const res = await postObjectAsJson(deleteUrl, region, "DELETE")
+    if (res.ok)
+    {
+        alert("Region is deleted")
     }
 }
 
@@ -94,5 +107,11 @@ function actionPutRegion()
     putRegion();
 }
 
+function actionDeleteRegion()
+{
+    deleteRegion();
+}
+
 pbPostregion.addEventListener('click', actionPostRegion)
 pbPutRegion.addEventListener('click', actionPutRegion)
+pbDeleteRegion.addEventListener('click', actionDeleteRegion)
